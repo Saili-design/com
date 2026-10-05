@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ilias El Forkani · Communication & Marketing</title>
+<meta name="description" content="Chargé de communication & marketing. Stratégie 360°, acquisition, social media et contenus. 12 000 billets vendus, +500K vues organiques, 120+ projets pilotés dans 15 pays.">
+<meta property="og:title" content="Ilias El Forkani · Communication & Marketing">
+<meta property="og:description" content="Stratégie, acquisition et contenus orientés performance.">
+<meta property="og:image" content="images/landscape-2.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#08080c; --s1:#101017; --s2:#16161f; --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.14);
+  --tx:#f3f3f6; --mu:#9b9bab; --mu2:#6c6c7c;
+  --ac:#c8ff2e; --ac2:#7c5cff;
+  --r:18px; --disp:'Space Grotesk',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--bg);color:var(--tx);font:16px/1.55 'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(700px 500px at 8% -5%,rgba(200,255,46,.09),transparent 60%),
+             radial-gradient(800px 600px at 105% 20%,rgba(124,92,255,.13),transparent 60%)}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.eyebrow{font:600 12px/1 var(--disp);letter-spacing:.18em;text-transform:uppercase;color:var(--ac);margin-bottom:14px}
+h2{font:700 clamp(30px,4.2vw,50px)/1.05 var(--disp);letter-spacing:-.03em}
+h2 em,h1 em{font-style:normal;color:var(--ac)}
+section{padding:90px 0}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;color:#d6d6de;padding:6px 12px;border:1px solid var(--line2);border-radius:999px;background:rgba(255,255,255,.02);white-space:nowrap}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 15px/1 'Inter';padding:15px 24px;border-radius:999px;transition:transform .25s,box-shadow .25s,background .25s;cursor:pointer}
+.btn-p{background:var(--ac);color:#0a0a0a;box-shadow:0 10px 30px rgba(200,255,46,.22)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(200,255,46,.35)}
+.btn-g{border:1px solid var(--line2);color:var(--tx);background:transparent}
+.btn-g:hover{background:rgba(255,255,255,.06);transform:translateY(-2px)}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+nav.sc{background:rgba(8,8,12,.78);backdrop-filter:blur(14px);border-color:var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font:700 18px var(--disp);letter-spacing:-.02em}
+.logo b{color:var(--ac)}
+.nl{display:flex;gap:30px;font-size:14px;color:var(--mu)}
+.nl a:hover{color:var(--tx)}
+.nc{font:600 13.5px 'Inter';padding:10px 18px;border-radius:999px;background:var(--tx);color:#0a0a0a;transition:background .25s}
+.nc:hover{background:var(--ac)}
+
+/* HERO (compact pour voir les chiffres dès l'arrivée) */
+#top{padding:100px 0 34px}
+.hero{display:grid;grid-template-columns:1.08fr .92fr;gap:52px;align-items:center}
+h1{font:700 clamp(38px,5.4vw,68px)/1 var(--disp);letter-spacing:-.045em;margin-bottom:20px}
+.lead{font-size:clamp(15.5px,1.5vw,18px);color:var(--mu);max-width:540px;margin-bottom:28px}
+.lead b{color:var(--tx);font-weight:600}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.collage{position:relative;height:440px}
+.cc{position:absolute;border-radius:20px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.55);border:1px solid var(--line2)}
+.cc img{width:100%;height:100%;object-fit:cover}
+.cc1{width:78%;height:56%;top:4%;left:0;transform:rotate(-3deg)}
+.cc2{width:46%;height:58%;top:24%;right:0;transform:rotate(4deg)}
+.cc3{width:44%;height:44%;bottom:0;left:16%;transform:rotate(-1.5deg)}
+.bd{position:absolute;z-index:3;display:flex;flex-direction:column;padding:11px 15px;border-radius:14px;background:rgba(16,16,23,.74);backdrop-filter:blur(12px);border:1px solid var(--line2);box-shadow:0 14px 34px rgba(0,0,0,.45);animation:float 6s ease-in-out infinite}
+.bd strong{font:700 22px/1 var(--disp);letter-spacing:-.02em}
+.bd span{font-size:11.5px;color:var(--mu);margin-top:5px}
+.bd1{top:0;right:6%}.bd1 strong{color:var(--ac)}
+.bd2{bottom:20%;left:-4%;animation-delay:-2s}
+.bd3{bottom:2%;right:4%;animation-delay:-4s}.bd3 strong{color:#ffd166}
+@keyframes float{50%{transform:translateY(-10px)}}
+
+/* KPI */
+.kpis{display:grid;grid-template-columns:repeat(6,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.kpi{padding:26px 18px;border-right:1px solid var(--line)}
+.kpi:last-child{border-right:0}
+.kpi strong{display:block;font:700 clamp(28px,3.1vw,42px)/1 var(--disp);letter-spacing:-.04em;white-space:nowrap}
+.kpi span{display:block;font-size:12.5px;color:var(--mu);margin-top:10px;line-height:1.35}
+
+/* HEADERS */
+.head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:42px;flex-wrap:wrap}
+.head p{color:var(--mu);max-width:380px}
+
+/* REVIEWS */
+.rating{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.rating strong{font:700 64px/1 var(--disp);letter-spacing:-.05em}
+.rating .stars{color:#ffd166;font-size:20px;letter-spacing:3px}
+.rating small{display:block;color:var(--mu);font-size:13px;margin-top:4px}
+.rv-ctrl{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.arr{width:48px;height:48px;border-radius:50%;border:1px solid var(--line2);background:transparent;color:var(--tx);font-size:20px;cursor:pointer;transition:background .25s,border-color .25s}
+.arr:hover{background:var(--ac);color:#0a0a0a;border-color:var(--ac)}
+.rtrack{overflow-x:auto;scrollbar-width:none;cursor:grab;user-select:none;-webkit-mask:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.rtrack::-webkit-scrollbar{display:none}
+.rtrack.drag{cursor:grabbing}
+.rrow{display:flex;gap:16px;width:max-content;padding:4px 24px}
+.rc{width:340px;flex:0 0 auto;background:var(--s1);border:1px solid var(--line);border-radius:var(--r);padding:24px;display:flex;flex-direction:column;gap:14px}
+.rc .stars{color:#ffd166;letter-spacing:2px;font-size:14px}
+.rc p{font-size:14.5px;color:#d9d9e1;line-height:1.55;flex:1}
+.rc .who{display:flex;align-items:center;gap:12px}
+.rc .av{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font:700 15px var(--disp);color:#0a0a0a;background:var(--ac);flex:0 0 auto}
+.rc .who b{display:block;font-size:14px}
+.rc .who small{font-size:12px;color:var(--mu)}
+.hint{margin-top:14px;text-align:center;font-size:12px;color:var(--mu2)}
+
+/* EXPERTISE */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{position:relative;background:var(--s1);border:1px solid var(--line);border-radius:var(--r);padding:28px;overflow:hidden;transition:transform .35s,border-color .35s}
+.card::after{content:"";position:absolute;inset:0;background:radial-gradient(400px 200px at var(--mx,50%) var(--my,0%),rgba(200,255,46,.10),transparent 60%);opacity:0;transition:opacity .35s;pointer-events:none}
+.card:hover{transform:translateY(-4px);border-color:rgba(200,255,46,.28)}
+.card:hover::after{opacity:1}
+.num{font:600 13px var(--disp);color:var(--ac);letter-spacing:.08em}
+.card h3{font:700 21px/1.2 var(--disp);letter-spacing:-.02em;margin:16px 0 14px}
+.card .chips .chip{font-size:12px;padding:5px 10px}
+
+/* CASES */
+.tabs{display:flex;gap:8px;margin-bottom:30px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;font:600 14px 'Inter';color:var(--mu);padding:12px 20px;border-radius:999px;border:1px solid var(--line2);background:transparent;cursor:pointer;transition:all .25s}
+.tab:hover{color:var(--tx);border-color:rgba(255,255,255,.3)}
+.tab.on{background:var(--ac);color:#0a0a0a;border-color:var(--ac)}
+.panel{display:none;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center;background:var(--s1);border:1px solid var(--line);border-radius:24px;padding:28px}
+.panel.on{display:grid;animation:fade .5s ease}
+.panel>*{min-width:0}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.media{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.media img{width:100%;border-radius:14px;object-fit:cover;aspect-ratio:1;cursor:zoom-in;transition:transform .35s,filter .35s;background:var(--s2)}
+.media img:first-child{grid-column:1/-1;aspect-ratio:16/10}
+.media img:hover{transform:scale(1.02);filter:brightness(1.08)}
+.ptag{font-size:13px;color:var(--mu);margin-bottom:12px}
+.panel h3{font:700 clamp(24px,2.6vw,32px)/1.12 var(--disp);letter-spacing:-.03em;margin-bottom:24px}
+.trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:24px}
+.trio div{background:var(--s2);border:1px solid var(--line);border-radius:14px;padding:16px}
+.trio strong{display:block;white-space:nowrap;font:700 clamp(19px,2.3vw,30px)/1 var(--disp);letter-spacing:-.03em;color:var(--ac)}
+.trio span{display:block;font-size:12px;color:var(--mu);margin-top:8px;line-height:1.3}
+.lbl{font:600 11px/1 'Inter';letter-spacing:.14em;text-transform:uppercase;color:var(--mu2);margin:0 0 10px}
+.panel .chips+.lbl{margin-top:18px}
+.chip.cl{border-color:rgba(124,92,255,.4);background:rgba(124,92,255,.08);color:#cfc5ff}
+
+/* FRAMEWORK */
+.funnel{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.step{position:relative;background:var(--s1);border:1px solid var(--line);border-radius:var(--r);padding:26px 24px}
+.step::before{content:"";position:absolute;left:24px;right:24px;top:0;height:3px;border-radius:0 0 4px 4px;background:linear-gradient(90deg,var(--ac),var(--ac2))}
+.step:not(:last-child)::after{content:"\2192";position:absolute;right:-14px;top:50%;transform:translateY(-50%);z-index:2;width:28px;height:28px;display:grid;place-items:center;border-radius:50%;background:var(--bg);border:1px solid var(--line2);color:var(--ac);font-size:14px}
+.step .num{display:block;margin-bottom:10px}
+.step h3{font:700 24px var(--disp);letter-spacing:-.03em;margin-bottom:16px}
+.step .chips{flex-direction:column;align-items:flex-start}
+
+/* CLIENTS */
+.logos{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.lg{height:124px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:var(--s1);border:1px solid var(--line);border-radius:16px;padding:16px;overflow:hidden;transition:transform .3s,border-color .3s}
+.lg:hover{transform:translateY(-3px);border-color:var(--line2)}
+.lg .lgi{height:50px;display:grid;place-items:center;width:100%}
+.lg img{max-height:50px;max-width:76%;object-fit:contain;opacity:.9}
+.lg .mono{filter:brightness(0) invert(1)}
+.lg .scr{mix-blend-mode:screen;filter:grayscale(1) contrast(1.25)}
+.lg .zm2{transform:scale(1.5)}
+.lg .nm{font-size:12px;font-weight:500;color:var(--mu);letter-spacing:.02em}
+.lg .wm{font:700 19px/1.1 var(--disp);letter-spacing:-.02em;text-align:center;color:#e9e9ef}
+.mq{overflow:hidden;margin-top:26px;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.mq-in{display:flex;gap:46px;width:max-content;animation:mq 38s linear infinite}
+.mq:hover .mq-in{animation-play-state:paused}
+.mq-in>span{font:600 clamp(18px,2vw,24px) var(--disp);letter-spacing:-.02em;color:var(--mu);white-space:nowrap;display:flex;align-items:center;gap:46px}
+.mq-in>span::after{content:"\2726";color:var(--ac);font-size:14px}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* TOOLS */
+.tools{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.tools .card h3{font-size:17px;margin:0 0 14px;color:var(--mu)}
+
+/* CONTACT */
+.final{position:relative;text-align:center;background:linear-gradient(135deg,rgba(200,255,46,.10),rgba(124,92,255,.14));border:1px solid var(--line2);border-radius:32px;padding:clamp(48px,7vw,86px) 24px;overflow:hidden}
+.final h2{font-size:clamp(34px,5.4vw,66px);max-width:820px;margin:0 auto 34px}
+.final .cta{justify-content:center}
+.final .edu{margin:34px auto 0;font-size:13px;color:var(--mu);max-width:640px}
+footer{padding:36px 0 46px;color:var(--mu2);font-size:13px;text-align:center}
+
+/* LIGHTBOX */
+#lb{position:fixed;inset:0;z-index:100;display:none;place-items:center;background:rgba(5,5,8,.92);backdrop-filter:blur(8px);cursor:zoom-out;padding:24px}
+#lb.on{display:grid}
+#lb img{max-width:min(1100px,94vw);max-height:90vh;border-radius:14px;box-shadow:0 30px 90px rgba(0,0,0,.7)}
+
+/* RESPONSIVE */
+@media (max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .collage{height:400px;max-width:520px}
+  .kpis{grid-template-columns:repeat(3,1fr)}
+  .kpi:nth-child(3){border-right:0}
+  .kpi:nth-child(-n+3){border-bottom:1px solid var(--line)}
+  .grid3{grid-template-columns:1fr 1fr}
+  .panel{grid-template-columns:1fr}
+  .funnel{grid-template-columns:1fr 1fr}
+  .step:nth-child(2)::after{display:none}
+  .logos{grid-template-columns:repeat(3,1fr)}
+  .nl{display:none}
+}
+@media (max-width:600px){
+  section{padding:68px 0}
+  .collage{height:330px}
+  .bd strong{font-size:18px}
+  .kpis{grid-template-columns:1fr 1fr}
+  .kpi{border-right:1px solid var(--line)!important;border-bottom:1px solid var(--line)}
+  .kpi:nth-child(2n){border-right:0!important}
+  .grid3,.tools,.funnel{grid-template-columns:1fr}
+  .step::after{display:none}
+  .logos{grid-template-columns:1fr 1fr}
+  .rc{width:290px}
+  .panel{padding:18px}
+  .trio div{padding:12px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap">
+    <a href="#top" class="logo">Ilias<b>.</b>El Forkani</a>
+    <div class="nl">
+      <a href="#avis">Avis</a>
+      <a href="#expertise">Expertise</a>
+      <a href="#cas">Cas clients</a>
+      <a href="#clients">Références</a>
+    </div>
+    <a href="#contact" class="nc">Me contacter</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="top">
+  <div class="wrap hero">
+    <div>
+      <p class="eyebrow">Chargé de communication & marketing</p>
+      <h1>Stratégie, acquisition et contenus <em>orientés performance.</em></h1>
+      <p class="lead">Stratégie 360°, acquisition, social media et contenus. <b>4 ans</b> à piloter la communication d'événements, de produits, de services et de marques, en France et dans <b>15 pays</b>.</p>
+      <div class="cta">
+        <a href="#cas" class="btn btn-p">Voir les cas clients <span>&rarr;</span></a>
+        <a href="#contact" class="btn btn-g">Me contacter</a>
+      </div>
+    </div>
+    <div class="collage">
+      <div class="cc cc1"><img src="images/landscape-2.jpg" alt="Événement" fetchpriority="high"></div>
+      <div class="cc cc2"><img src="images/album-2-3.jpg" alt="Campagne social media"></div>
+      <div class="cc cc3"><img src="images/album-3-2.jpg" alt="Packaging produit parfum"></div>
+      <div class="bd bd1"><strong>12 000</strong><span>billets vendus</span></div>
+      <div class="bd bd2"><strong>+500K</strong><span>vues organiques</span></div>
+      <div class="bd bd3"><strong>&#9733; 4,9/5</strong><span>120+ projets pilotés</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- KPI -->
+<div class="wrap">
+  <div class="kpis rv">
+    <div class="kpi"><strong data-to="12000">0</strong><span>billets vendus</span></div>
+    <div class="kpi"><strong data-to="500" data-pre="+" data-suf="K">0</strong><span>vues organiques</span></div>
+    <div class="kpi"><strong data-to="100" data-suf="+">0</strong><span>campagnes menées</span></div>
+    <div class="kpi"><strong data-to="120" data-suf="+">0</strong><span>projets pilotés</span></div>
+    <div class="kpi"><strong data-to="15">0</strong><span>pays clients</span></div>
+    <div class="kpi"><strong data-to="4.9" data-dec="1" data-suf="/5">0</strong><span>note clients vérifiée</span></div>
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<section id="avis">
+  <div class="wrap">
+    <div class="head rv">
+      <div><p class="eyebrow">Avis clients</p>
+        <div class="rating"><strong>4,9</strong><div><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><small>120+ projets · 15 pays · avis vérifiés</small></div></div>
+      </div>
+      <div class="rv-ctrl">
+        <button class="arr" id="rPrev" aria-label="Avis précédent">&larr;</button>
+        <button class="arr" id="rNext" aria-label="Avis suivant">&rarr;</button>
+        <a href="https://fr.fiverr.com/elforkani?public_mode=true" target="_blank" rel="noopener" class="btn btn-g">Voir les avis vérifiés &rarr;</a>
+      </div>
+    </div>
+  </div>
+  <div class="rtrack" id="rtrack"><div class="rrow" id="rrow">
+    <div class="rc"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"This is my second order with him, and I'm absolutely satisfied once again. Completed very quickly and to an excellent standard."</p><div class="who"><span class="av">M</span><div><b>Marctype</b><small>Artiste · Allemagne</small></div></div></div>
+    <div class="rc"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"He met our expectations perfectly and created even something better than my idea was."</p><div class="who"><span class="av">M</span><div><b>Malkbollig</b><small>Night club · Australie</small></div></div></div>
+    <div class="rc"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Top-notch design that perfectly matched my vision. Communication was smooth, and they were responsive to my requests."</p><div class="who"><span class="av">G</span><div><b>Graphvoyager1</b><small>Artiste · Turquie</small></div></div></div>
+    <div class="rc"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Second time working with him and he brought great quality again, will continue to work with him."</p><div class="who"><span class="av">T</span><div><b>Torelly004</b><small>Festival · Royaume-Uni</small></div></div></div>
+    <div class="rc"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Très bonne communication, rapidité, je le recommande."</p><div class="who"><span class="av">T</span><div><b>Tomsbike</b><small>Entreprise · France</small></div></div></div>
+    <div class="rc"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Very good work! Really happy with the order."</p><div class="who"><span class="av">M</span><div><b>Maximwilson</b><small>Social media manager · Royaume-Uni</small></div></div></div>
+    <div class="rc"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Perfect work!"</p><div class="who"><span class="av">M</span><div><b>Miss</b><small>Organisatrice d'événements · Portugal</small></div></div></div>
+    <div class="rc"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Thank you again!"</p><div class="who"><span class="av">D</span><div><b>Devilsresidence</b><small>Association · Suède</small></div></div></div>
+  </div></div>
+  <p class="hint">Fais glisser ou utilise les flèches</p>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <div class="wrap">
+    <div class="head rv">
+      <h2>Expertise</h2>
+      <p>De la stratégie à la conversion : penser, produire, mesurer.</p>
+    </div>
+    <div class="grid3">
+      <div class="card rv"><span class="num">01</span><h3>Stratégie de communication 360°</h3><div class="chips"><span class="chip">Plan de com</span><span class="chip">Positionnement</span><span class="chip">Calendrier éditorial</span></div></div>
+      <div class="card rv"><span class="num">02</span><h3>Acquisition & growth</h3><div class="chips"><span class="chip">Tunnel de conversion</span><span class="chip">Acquisition organique</span><span class="chip">ROI</span></div></div>
+      <div class="card rv"><span class="num">03</span><h3>Social media & communauté</h3><div class="chips"><span class="chip">Instagram</span><span class="chip">TikTok</span><span class="chip">Facebook</span><span class="chip">Community management</span></div></div>
+      <div class="card rv"><span class="num">04</span><h3>Contenus & direction artistique</h3><div class="chips"><span class="chip">Visuels</span><span class="chip">Motion</span><span class="chip">Vidéo</span><span class="chip">Print</span></div></div>
+      <div class="card rv"><span class="num">05</span><h3>Marque & partenariats</h3><div class="chips"><span class="chip">Lancements produit</span><span class="chip">Partenariats</span><span class="chip">Événementiel</span></div></div>
+      <div class="card rv"><span class="num">06</span><h3>Consulting marketing</h3><div class="chips"><span class="chip">Brief & recommandation</span><span class="chip">Clients internationaux</span><span class="chip">IA</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section id="cas">
+  <div class="wrap">
+    <div class="head rv"><h2>Cas clients</h2></div>
+    <div class="tabs rv" role="tablist">
+      <button class="tab on" data-p="p1">Shield Run</button>
+      <button class="tab" data-p="p4">Brand content</button>
+      <button class="tab" data-p="p5">International</button>
+      <button class="tab" data-p="p3">Agence nightlife</button>
+      <button class="tab" data-p="p2">Clubs & festivals</button>
+    </div>
+
+    <div class="panel on" id="p1">
+      <div class="media">
+        <img src="images/landscape-2.jpg" alt="Foule Shield Run" loading="lazy">
+        <img src="images/album-1-1.jpg" alt="After Pride" loading="lazy">
+        <img src="images/album-1-5.jpg" alt="Renaissance Last" loading="lazy">
+        <img src="images/social.jpg" alt="Campagne social media" loading="lazy">
+      </div>
+      <div>
+        <p class="ptag">Collectif événementiel · Président & responsable communication</p>
+        <h3>Rentabiliser 20 000 € de budget avec les seules préventes.</h3>
+        <div class="trio">
+          <div><strong>12 000</strong><span>billets vendus</span></div>
+          <div><strong>80%</strong><span>d'événements sold-out</span></div>
+          <div><strong>+500K</strong><span>vues organiques</span></div>
+        </div>
+        <p class="lbl">Leviers activés</p>
+        <div class="chips"><span class="chip">Storytelling</span><span class="chip">Teasing</span><span class="chip">Préventes</span><span class="chip">Visuels multicanal</span><span class="chip">Video mapping</span><span class="chip">Partenariats artistes</span></div>
+      </div>
+    </div>
+
+    <div class="panel" id="p4">
+      <div class="media">
+        <img src="images/square-1.jpg" alt="Catalogue Elixir Prestige" loading="lazy">
+        <img src="images/album-3-2.jpg" alt="Packaging parfums" loading="lazy">
+        <img src="images/album-3-1.jpg" alt="Gamme parfums" loading="lazy">
+        <img src="images/album-3-3.jpg" alt="Centre esthétique auto" loading="lazy">
+      </div>
+      <div>
+        <p class="ptag">Agence de solutions digitales · Grands comptes & marques</p>
+        <h3>Contenus social media et retouche pour des marques exigeantes.</h3>
+        <div class="trio">
+          <div><strong>3</strong><span>grands comptes</span></div>
+          <div><strong>100%</strong><span>sous charte de marque</span></div>
+          <div><strong>2 sem.</strong><span>de délai de production</span></div>
+        </div>
+        <p class="lbl">Leviers activés</p>
+        <div class="chips"><span class="chip">Respect de charte</span><span class="chip">Collaboration marketing, photo, vidéo</span><span class="chip">Retouche</span></div>
+        <p class="lbl">Marques</p>
+        <div class="chips"><span class="chip cl">Toyota</span><span class="chip cl">Lexus</span><span class="chip cl">La Poste</span><span class="chip cl">Elixir Prestige</span></div>
+      </div>
+    </div>
+
+    <div class="panel" id="p5">
+      <div class="media">
+        <img src="images/format-feed.jpg" alt="Drew Dapps, Washington DC" loading="lazy">
+        <img src="images/album-4-9.jpg" alt="Twitch Tech, Royaume-Uni" loading="lazy">
+        <img src="images/album-4-8.jpg" alt="Marctype, Allemagne" loading="lazy">
+        <img src="images/album-4-1.jpg" alt="Dream Space" loading="lazy">
+      </div>
+      <div>
+        <p class="ptag">Consultant marketing & communication · Freelance</p>
+        <h3>Artistes, entreprises, clubs et festivals dans 15 pays.</h3>
+        <div class="trio">
+          <div><strong>120+</strong><span>projets pilotés</span></div>
+          <div><strong>4,9/5</strong><span>note vérifiée</span></div>
+          <div><strong>15</strong><span>pays</span></div>
+        </div>
+        <p class="lbl">Leviers activés</p>
+        <div class="chips"><span class="chip">Analyse du brief</span><span class="chip">Positionnement</span><span class="chip">Contenus prêts à publier</span></div>
+        <p class="lbl">Marchés</p>
+        <div class="chips"><span class="chip cl">États-Unis</span><span class="chip cl">Royaume-Uni</span><span class="chip cl">Allemagne</span><span class="chip cl">Australie</span><span class="chip cl">Suède</span><span class="chip cl">Portugal</span><span class="chip cl">Turquie</span></div>
+      </div>
+    </div>
+
+    <div class="panel" id="p3">
+      <div class="media">
+        <img src="images/album-2-3.jpg" alt="Encore" loading="lazy">
+        <img src="images/album-2-2.jpg" alt="Afro Mood" loading="lazy">
+        <img src="images/album-2-8.jpg" alt="Afro Mood story" loading="lazy">
+        <img src="images/album-2-1.jpg" alt="Soho" loading="lazy">
+      </div>
+      <div>
+        <p class="ptag">Agence de communication digitale</p>
+        <h3>Des campagnes clés en main pour des établissements dans 4 villes.</h3>
+        <div class="trio">
+          <div><strong>4</strong><span>villes : Paris, Nantes, Lille, Marseille</span></div>
+          <div><strong>3</strong><span>formats par campagne</span></div>
+          <div><strong>Print</strong><span>supports imprimés et distribués</span></div>
+        </div>
+        <p class="lbl">Leviers activés</p>
+        <div class="chips"><span class="chip">Déclinaison post, story, cover, flyer</span><span class="chip">Charte par campagne</span><span class="chip">Production rapide</span></div>
+      </div>
+    </div>
+
+    <div class="panel" id="p2">
+      <div class="media">
+        <img src="images/landscape-3.jpg" alt="Festival" loading="lazy">
+        <img src="images/square-4.jpg" alt="Electro Storm" loading="lazy">
+        <img src="images/square-3.jpg" alt="Haiti meets Africa" loading="lazy">
+        <img src="images/album-1-7.jpg" alt="No One Wony" loading="lazy">
+      </div>
+      <div>
+        <p class="ptag">Chargé de communication événementielle · France & international</p>
+        <h3>Remplir des lieux de 500 à 20 000 personnes.</h3>
+        <div class="trio">
+          <div><strong>100+</strong><span>événements</span></div>
+          <div><strong>800</strong><span>entrées sur Mix & Match (club de 1 000)</span></div>
+          <div><strong>24</strong><span>artistes et 12 collectifs fédérés</span></div>
+        </div>
+        <p class="lbl">Leviers activés</p>
+        <div class="chips"><span class="chip">Line-up comme argument de vente</span><span class="chip">Activation des partenaires</span><span class="chip">Com ciblée par ville</span></div>
+        <p class="lbl">Lieux & festivals</p>
+        <div class="chips"><span class="chip cl">Delta Festival</span><span class="chip cl">Kardinal</span><span class="chip cl">Sweet Night</span><span class="chip cl">Colartson</span><span class="chip cl">Macadam</span><span class="chip cl">Warehouse</span><span class="chip cl">Le Ferrailleur</span><span class="chip cl">NOCT</span><span class="chip cl">CO2</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FRAMEWORK -->
+<section id="framework">
+  <div class="wrap">
+    <div class="head rv">
+      <div><p class="eyebrow">Growth marketing</p><h2>Framework d'<em>acquisition client.</em></h2></div>
+      <p>Une approche full-funnel, de la notoriété à la rétention.</p>
+    </div>
+    <div class="funnel">
+      <div class="step rv"><span class="num">01</span><h3>Awareness</h3><div class="chips"><span class="chip">Stratégie de contenu</span><span class="chip">Social organique & SEO</span><span class="chip">Storytelling de marque</span></div></div>
+      <div class="step rv"><span class="num">02</span><h3>Considération</h3><div class="chips"><span class="chip">Preuve sociale</span><span class="chip">Influence & partenariats</span><span class="chip">Contenus à valeur ajoutée</span></div></div>
+      <div class="step rv"><span class="num">03</span><h3>Conversion</h3><div class="chips"><span class="chip">Landing pages & CTA</span><span class="chip">Offres & urgence</span><span class="chip">Relances emailing</span></div></div>
+      <div class="step rv"><span class="num">04</span><h3>Rétention</h3><div class="chips"><span class="chip">CRM & segmentation</span><span class="chip">Réengagement</span><span class="chip">Communauté</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section id="clients">
+  <div class="wrap">
+    <div class="head rv">
+      <div><p class="eyebrow">Références</p><h2>Ils m'ont fait <em>confiance.</em></h2></div>
+      <p>Grands comptes, marques, agences et établissements.</p>
+    </div>
+    <div class="logos rv">
+      <div class="lg"><div class="lgi"><img class="mono" src="images/clients/toyota.png" alt="Toyota" loading="lazy"></div><span class="nm">Toyota</span></div>
+      <div class="lg"><div class="lgi"><img class="mono" src="images/clients/lexus.png" alt="Lexus" loading="lazy"></div><span class="nm">Lexus</span></div>
+      <div class="lg"><div class="lgi"><img class="mono" src="images/clients/la-poste.png" alt="La Poste" loading="lazy"></div><span class="nm">La Poste</span></div>
+      <div class="lg"><div class="lgi"><span class="wm">Elixir Prestige</span></div><span class="nm">Parfums</span></div>
+      <div class="lg"><div class="lgi"><img class="mono zm2" src="images/clients/shield-run.png" alt="Shield Run" loading="lazy"></div><span class="nm">Shield Run</span></div>
+      <div class="lg"><div class="lgi"><img class="scr" src="images/clients/macadam.png" alt="Macadam" loading="lazy"></div><span class="nm">Macadam</span></div>
+      <div class="lg"><div class="lgi"><img class="scr" src="images/clients/dimensions-studio.png" alt="Dimensions Studio" loading="lazy"></div><span class="nm">Dimensions Studio</span></div>
+      <div class="lg"><div class="lgi"><span class="wm">Night Birds</span></div><span class="nm">Agence de com</span></div>
+      <div class="lg"><div class="lgi"><span class="wm">Pop Club</span></div><span class="nm">Marseille</span></div>
+      <div class="lg"><div class="lgi"><span class="wm">DTDC</span></div><span class="nm">Washington DC</span></div>
+    </div>
+    <div class="mq"><div class="mq-in">
+      <span>Delta Festival</span><span>Kardinal Festival</span><span>Sweet Night Festival</span><span>Colartson Festival</span><span>Warehouse</span><span>Le Ferrailleur</span><span>NOCT</span><span>CO2</span><span>Panic Room</span><span>Caves Saint-Sabin</span><span>KM25</span><span>La Chaumière</span><span>Le Klub</span>
+    </div></div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="outils" style="padding-top:20px">
+  <div class="wrap">
+    <div class="head rv"><h2>Outils</h2></div>
+    <div class="tools">
+      <div class="card rv"><h3>Marketing & data</h3><div class="chips"><span class="chip">Google Analytics 4</span><span class="chip">Google Tag Manager</span><span class="chip">Search Console</span><span class="chip">Looker Studio</span><span class="chip">Semrush</span><span class="chip">Google Ads</span><span class="chip">Meta Business Suite</span><span class="chip">HubSpot</span><span class="chip">Brevo</span><span class="chip">Mailchimp</span><span class="chip">Hootsuite</span></div></div>
+      <div class="card rv"><h3>Création</h3><div class="chips"><span class="chip">Photoshop</span><span class="chip">Illustrator</span><span class="chip">InDesign</span><span class="chip">Premiere Pro</span><span class="chip">After Effects</span><span class="chip">Canva</span><span class="chip">Figma</span><span class="chip">Blender</span></div></div>
+      <div class="card rv"><h3>Gestion de projet</h3><div class="chips"><span class="chip">Notion</span><span class="chip">Trello</span><span class="chip">Miro</span><span class="chip">Excel</span><span class="chip">WordPress</span></div></div>
+      <div class="card rv"><h3>IA</h3><div class="chips"><span class="chip">Claude</span><span class="chip">Astra</span><span class="chip">Hugging Face</span><span class="chip">Nano Banana</span><span class="chip">Seedance</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="final rv">
+      <p class="eyebrow">Contact</p>
+      <h2>Votre prochaine campagne mérite des <em>résultats.</em></h2>
+      <div class="cta">
+        <a href="mailto:ilias.forkani@gmail.com" class="btn btn-p">ilias.forkani@gmail.com</a>
+        <a href="https://www.linkedin.com/in/ilias-elforkani/" target="_blank" rel="noopener" class="btn btn-g">LinkedIn</a>
+      </div>
+      <p class="edu">Master Chef de projet multimédia · Master Manager en stratégie & développement de projet digital, option Création & IA</p>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Ilias El Forkani · Communication & Marketing</footer>
+
+<div id="lb"><img alt=""></div>
+
+<script>
+// nav au scroll
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('sc',scrollY>20),{passive:true});
+
+// apparition au scroll + compteurs
+const fmt=(v,d)=>v.toLocaleString('fr-FR',{minimumFractionDigits:d,maximumFractionDigits:d});
+function count(el){
+  const to=+el.dataset.to,d=+(el.dataset.dec||0),pre=el.dataset.pre||'',suf=el.dataset.suf||'',t0=performance.now(),dur=1600;
+  (function f(t){const p=Math.min((t-t0)/dur,1),e=1-Math.pow(1-p,3);el.textContent=pre+fmt(to*e,d)+suf;if(p<1)requestAnimationFrame(f)})(t0);
+}
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;
+  e.target.classList.add('in');
+  e.target.querySelectorAll('[data-to]').forEach(count);
+  io.unobserve(e.target);
+}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+// halo qui suit la souris sur les cartes
+document.querySelectorAll('.card').forEach(c=>c.addEventListener('mousemove',e=>{
+  const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');
+}));
+
+// onglets des cas clients
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===t));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('on',p.id===t.dataset.p));
+}));
+
+// marquee des lieux (contenu dupliqué)
+document.querySelectorAll('.mq-in').forEach(m=>m.innerHTML+=m.innerHTML);
+
+// avis : défilement auto + glisser à la souris + flèches
+(function(){
+  const t=document.getElementById('rtrack'),row=document.getElementById('rrow');
+  row.innerHTML+=row.innerHTML;
+  const half=()=>row.scrollWidth/2;
+  const still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  let pos=1,paused=false,drag=false,x0=0,s0=0,resume;
+  const set=()=>{const h=half();if(pos>=h)pos-=h;else if(pos<0)pos+=h;t.scrollLeft=pos;};
+  set();
+  (function loop(){if(!paused&&!drag&&!still){pos+=.45;set();}requestAnimationFrame(loop)})();
+  const hold=ms=>{paused=true;clearTimeout(resume);if(ms)resume=setTimeout(()=>{pos=t.scrollLeft;paused=false},ms);};
+  t.addEventListener('mouseenter',()=>hold());
+  t.addEventListener('mouseleave',()=>{if(!drag){pos=t.scrollLeft;paused=false}});
+  t.addEventListener('touchstart',()=>hold(3000),{passive:true});
+  t.addEventListener('scroll',()=>{if(paused&&!drag){pos=t.scrollLeft;const h=half();if(pos>=h||pos<=0)set();}},{passive:true});
+  t.addEventListener('mousedown',e=>{drag=true;x0=e.pageX;s0=t.scrollLeft;t.classList.add('drag');e.preventDefault()});
+  addEventListener('mousemove',e=>{if(!drag)return;pos=s0-(e.pageX-x0);set();});
+  addEventListener('mouseup',()=>{if(!drag)return;drag=false;t.classList.remove('drag');pos=t.scrollLeft});
+  function go(dir){
+    hold(4000);pos=t.scrollLeft;
+    if(pos+dir*356<0)pos+=half();
+    const from=pos,dx=dir*356,t0=performance.now();
+    (function a(n){const p=Math.min((n-t0)/450,1),e=1-Math.pow(1-p,3);pos=from+dx*e;set();if(p<1)requestAnimationFrame(a);})(t0);
+  }
+  document.getElementById('rPrev').addEventListener('click',()=>go(-1));
+  document.getElementById('rNext').addEventListener('click',()=>go(1));
+})();
+
+// lightbox
+const lb=document.getElementById('lb'),lbi=lb.querySelector('img');
+document.querySelectorAll('.media img').forEach(i=>i.addEventListener('click',()=>{lbi.src=i.currentSrc||i.src;lb.classList.add('on')}));
+lb.addEventListener('click',()=>lb.classList.remove('on'));
+addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('on')});
+</script>
+</body>
+</html>
