@@ -4,118 +4,188 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Ilias EL FORKANI</title>
-<meta name="description" content="Image, vidéo et acquisition. 3D produit, création visuelle, communication.">
+<meta name="description" content="3D &amp; real-time artist. Game design, environnements, cinématiques.">
 <meta name="theme-color" content="#0e1016">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234657f1'/><text x='50' y='70' font-size='58' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'>I</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234657f1'/><text x='50' y='71' font-size='60' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'>I</text></svg>">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 :root{
-  --bg:#0e1016; --card:#171a23; --card2:#1d212c;
-  --tx:#f4f5f8; --mu:#9aa0b0; --ac:#6d7bff; --line:#272c38;
+  --bg:#0e1016; --panel:#161922; --panel2:#1d212c; --line:#262b38;
+  --tx:#ffffff; --mu:#a3abc4; --ac:#4657f1; --ac2:#8591ff; --gold:#f5b83d;
 }
 html{-webkit-text-size-adjust:100%}
 body{
   background:var(--bg); color:var(--tx);
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-family:"Barlow",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
   min-height:100dvh; display:flex; justify-content:center;
-  padding:28px 18px calc(28px + env(safe-area-inset-bottom));
+  padding:30px 18px calc(32px + env(safe-area-inset-bottom));
+  overflow-x:hidden;
 }
-.wrap{width:100%;max-width:440px;display:flex;flex-direction:column;gap:22px}
-header{text-align:left}
-h1{font-size:28px;line-height:1.15;letter-spacing:-.02em;font-weight:800}
-.tag{margin-top:8px;font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ac)}
-.role{margin-top:7px;font-size:15px;line-height:1.5;color:var(--mu)}
-.role b{color:var(--tx);font-weight:600}
-.rule{height:3px;width:46px;background:var(--ac);border-radius:2px;margin-top:14px}
-nav{display:flex;flex-direction:column;gap:11px}
-a.b{
-  display:flex;align-items:center;gap:14px;
-  background:var(--card); border:1px solid var(--line); border-radius:15px;
-  padding:16px 17px; text-decoration:none; color:var(--tx);
+.wrap{width:100%;max-width:460px;display:flex;flex-direction:column;gap:24px}
+
+/* ---- entrée en cascade ---- */
+.in{opacity:0;transform:translateY(14px);animation:rise .55s cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+.d1{animation-delay:.05s}.d2{animation-delay:.14s}.d3{animation-delay:.23s}
+.d4{animation-delay:.32s}.d5{animation-delay:.41s}.d6{animation-delay:.5s}.d7{animation-delay:.58s}
+
+/* ---- en-tête ---- */
+h1{font-size:30px;font-weight:800;line-height:1.05;letter-spacing:-.025em}
+.tag{
+  margin-top:9px;font-size:11.5px;font-weight:600;letter-spacing:.17em;
+  text-transform:uppercase;color:var(--ac2)
 }
-a.b:active{background:var(--card2)}
-.ic{
-  flex:0 0 42px;height:42px;border-radius:11px;background:#232838;
-  display:flex;align-items:center;justify-content:center;font-size:20px
+.rule{height:3px;width:46px;background:var(--ac);border-radius:2px;margin-top:14px;
+  transform-origin:left;animation:grow .7s .35s cubic-bezier(.2,.7,.3,1) backwards}
+@keyframes grow{from{transform:scaleX(0)}}
+
+/* ---- étiquette select ---- */
+.sel{display:flex;align-items:center;gap:10px;font-size:10.5px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:#5e6680}
+.sel::after{content:"";flex:1;height:1px;background:var(--line)}
+.sel i{width:6px;height:6px;background:var(--ac2);border-radius:1px;
+  animation:blink 1.6s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
+
+/* ---- slots ---- */
+nav{display:flex;flex-direction:column;gap:12px;margin-top:-8px}
+a.slot{
+  position:relative;display:flex;align-items:center;gap:15px;
+  background:var(--panel);border:1px solid var(--line);
+  padding:17px 17px 17px 15px;text-decoration:none;color:var(--tx);
+  clip-path:polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
+  transition:background .18s, transform .12s, border-color .18s;
+  overflow:hidden;
+}
+a.slot::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--ac);
+  transform:scaleY(0);transform-origin:top;transition:transform .22s
+}
+a.slot:hover,a.slot:focus-visible{background:var(--panel2);border-color:#39415c}
+a.slot:hover::before,a.slot:focus-visible::before{transform:scaleY(1)}
+a.slot:active{transform:scale(.978);background:var(--panel2)}
+a.slot:active::before{transform:scaleY(1)}
+.num{
+  flex:0 0 44px;height:44px;display:flex;align-items:center;justify-content:center;
+  background:#202533;color:var(--ac2);font-weight:800;font-size:15px;letter-spacing:.02em;
+  clip-path:polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
 }
 .txt{flex:1;min-width:0}
-.tt{display:block;font-size:15.5px;font-weight:650;line-height:1.25}
-.sb{display:block;font-size:12.5px;color:var(--mu);margin-top:3px;line-height:1.35}
-.ar{margin-left:auto;color:#5d6478;font-size:19px}
+.tt{display:block;font-size:15.5px;font-weight:700;line-height:1.2;letter-spacing:-.005em}
+.sb{display:block;font-size:12.5px;font-weight:400;color:var(--mu);margin-top:4px;line-height:1.35}
+.ar{margin-left:auto;color:#5e6680;font-size:19px;font-weight:600;transition:transform .2s,color .2s}
+a.slot:hover .ar{transform:translateX(3px);color:var(--ac2)}
+
+/* ---- rangée secondaire ---- */
 .sec{display:flex;gap:11px}
 .sec a{
-  flex:1;min-width:0;background:transparent;border:1px solid var(--line);border-radius:13px;
-  padding:12px 10px;text-decoration:none;color:var(--tx);
-  display:flex;flex-direction:column;align-items:center;gap:5px
+  flex:1;min-width:0;background:transparent;border:1px solid var(--line);
+  padding:13px 10px;text-decoration:none;color:var(--tx);
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  clip-path:polygon(0 0, calc(100% - 11px) 0, 100% 11px, 100% 100%, 11px 100%, 0 calc(100% - 11px));
+  transition:background .18s,border-color .18s,transform .12s
 }
+.sec a:hover{background:var(--panel);border-color:#394054}
+.sec a:active{transform:scale(.97);background:var(--panel)}
 .big{font-size:15px;line-height:1}
-.stars{color:#f5b83d;letter-spacing:1.5px;font-size:13px}
-.lab{font-size:12.5px;font-weight:600;text-align:center;line-height:1.2}
-.sec a:active{background:var(--card)}
-.ct{background:var(--card);border:1px solid var(--line);border-radius:15px;overflow:hidden}
-.ct a{
-  display:flex;align-items:center;gap:13px;padding:14px 17px;
-  text-decoration:none;color:var(--tx);font-size:14.5px;border-bottom:1px solid var(--line)
-}
+.stars{color:var(--gold);letter-spacing:1.6px;font-size:12.5px}
+.lab{font-size:12px;font-weight:600;text-align:center;line-height:1.25;color:var(--mu)}
+
+/* ---- contact ---- */
+.ct{border:1px solid var(--line);background:var(--panel);
+  clip-path:polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px))}
+.ct a{display:flex;align-items:center;gap:13px;padding:14px 17px;
+  text-decoration:none;color:var(--tx);font-size:14.5px;font-weight:500;
+  border-bottom:1px solid var(--line);transition:background .16s}
 .ct a:last-child{border-bottom:none}
-.ct a:active{background:var(--card2)}
-.ct .k{flex:0 0 22px;text-align:center;font-size:16px}
-.ct .v{color:var(--mu);font-size:13.5px}
+.ct a:hover,.ct a:active{background:var(--panel2)}
+.ct .k{flex:0 0 20px;text-align:center;font-size:15px;color:var(--ac2)}
+.ct .v{display:block;color:var(--mu);font-size:13px;font-weight:400;margin-top:1px}
+
 .save{
-  display:block;text-align:center;text-decoration:none;
-  background:var(--ac);color:#fff;font-weight:700;font-size:15px;
-  padding:16px;border-radius:15px
+  display:block;text-align:center;text-decoration:none;background:var(--ac);
+  color:#fff;font-weight:700;font-size:15px;letter-spacing:.01em;padding:16px;
+  clip-path:polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+  transition:filter .16s,transform .12s
 }
-.save:active{filter:brightness(.92)}
-footer{text-align:center;color:#5d6478;font-size:11.5px;line-height:1.5}
-@media(prefers-color-scheme:light){
-  :root{--bg:#f6f7fa;--card:#fff;--card2:#eef0f5;--tx:#13151c;--mu:#656c7e;--ac:#4657f1;--line:#e2e5ee}
-  .ic{background:#eef0f7}
+.save:hover{filter:brightness(1.1)}
+.save:active{transform:scale(.98);filter:brightness(.92)}
+
+footer{text-align:center;color:#5e6680;font-size:11.5px;line-height:1.6;font-weight:500}
+footer b{color:var(--mu);font-weight:600}
+
+@media(prefers-reduced-motion:reduce){
+  .in,.rule{animation:none;opacity:1;transform:none}
+  .sel i{animation:none}
+  *{transition:none!important}
 }
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <header>
+  <header class="in d1">
     <h1>Ilias EL FORKANI</h1>
-    <p class="tag">IA &amp; nouvelles technologies</p>
-    <p class="role">Je rends vos projets <b>visibles</b> et <b>crédibles</b>.<br>Communication, 3D et vidéo.</p>
+    <p class="tag">3D &amp; real-time artist</p>
     <div class="rule"></div>
   </header>
 
+  <p class="sel in d2"><i></i> Choisis ton terrain</p>
+
   <nav>
-    <a class="b" href="https://saili-design.github.io/com/">
-      <span class="ic">📈</span>
-      <span class="txt"><span class="tt">Communication &amp; acquisition</span><span class="sb">Site, contenu, réseaux, événementiel</span></span>
+    <a class="slot in d3" href="https://saili-design.github.io/Ldportfolio/">
+      <span class="num">01</span>
+      <span class="txt">
+        <span class="tt">Game design &amp; level design</span>
+        <span class="sb">Niveaux, blockout, intentions de jeu</span>
+      </span>
       <span class="ar">›</span>
     </a>
-    <a class="b" href="https://saili-design.github.io/EnvPortfolio/">
-      <span class="ic">🧊</span>
-      <span class="txt"><span class="tt">3D &amp; visualisation produit</span><span class="sb">Modélisation, rendu, mise en situation</span></span>
+    <a class="slot in d4" href="https://saili-design.github.io/EnvPortfolio/">
+      <span class="num">02</span>
+      <span class="txt">
+        <span class="tt">Environments, props &amp; lighting</span>
+        <span class="sb">Décors, assets, éclairage, rendu</span>
+      </span>
       <span class="ar">›</span>
     </a>
-    <a class="b" href="https://saili-design.github.io/VisualPortfolio/">
-      <span class="ic">🎬</span>
-      <span class="txt"><span class="tt">Création visuelle &amp; vidéo</span><span class="sb">Identité, affiches, motion, formats courts</span></span>
+    <a class="slot in d5" href="https://saili-design.github.io/VisualPortfolio/">
+      <span class="num">03</span>
+      <span class="txt">
+        <span class="tt">Cinematics, trailers &amp; game ads</span>
+        <span class="sb">Motion, montage, formats courts</span>
+      </span>
       <span class="ar">›</span>
     </a>
   </nav>
 
-  <div class="sec">
-    <a href="https://www.youtube.com/watch?v=vqerNUMkNkk"><span class="big">▶</span><span class="lab">Showreel 3D</span></a>
-    <a href="https://fr.fiverr.com/elforkani?public_mode=true"><span class="big stars">★★★★★</span><span class="lab">Avis clients · 4,9/5</span></a>
+  <div class="sec in d6">
+    <a href="https://www.youtube.com/watch?v=vqerNUMkNkk">
+      <span class="big">▶</span><span class="lab">Showreel 3D</span>
+    </a>
+    <a href="https://fr.fiverr.com/elforkani?public_mode=true">
+      <span class="big stars">★★★★★</span><span class="lab">Avis clients · 4,9/5</span>
+    </a>
   </div>
 
-  <div class="ct">
-    <a href="mailto:ilias.forkani@gmail.com"><span class="k">✉</span><span>Email<br><span class="v">ilias.forkani@gmail.com</span></span></a>
-    <a href="tel:+33619906799"><span class="k">☎</span><span>Téléphone<br><span class="v">06 19 90 67 99</span></span></a>
-    <a href="https://www.linkedin.com/in/ilias-elforkani/"><span class="k">in</span><span>LinkedIn<br><span class="v">ilias-elforkani</span></span></a>
+  <div class="ct in d6">
+    <a href="mailto:ilias.forkani@gmail.com">
+      <span class="k">✉</span><span>Email<span class="v">ilias.forkani@gmail.com</span></span>
+    </a>
+    <a href="tel:+33619906799">
+      <span class="k">☎</span><span>Téléphone<span class="v">+33 6 19 90 67 99</span></span>
+    </a>
+    <a href="https://www.linkedin.com/in/ilias-elforkani/">
+      <span class="k">in</span><span>LinkedIn<span class="v">ilias-elforkani</span></span>
+    </a>
   </div>
 
-  <a class="save" href="ilias-el-forkani.vcf" download>Enregistrer mon contact</a>
+  <a class="save in d7" href="ilias-el-forkani.vcf" download>Enregistrer mon contact</a>
 
-  <footer>100+ projets livrés · 16 pays · 4,9/5</footer>
+  <footer class="in d7"><b>100+ projets</b> · 16 pays · 4,9/5</footer>
 
 </div>
 </body>
