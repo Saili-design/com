@@ -164,6 +164,9 @@ footer b{color:var(--mu);font-weight:600}
     <a href="https://www.linkedin.com/in/ilias-elforkani/">
       <span class="k">in</span><span>LinkedIn<span class="v">ilias-elforkani</span></span>
     </a>
+    <a href="#" id="dcRow" data-tag="saili.design">
+      <span class="k">&#9679;</span><span>Discord<span class="v" id="dcVal">saili.design</span></span>
+    </a>
   </div>
 
   <a class="save in d5" href="ilias-el-forkani.vcf" download>Enregistrer mon contact</a>
@@ -171,5 +174,25 @@ footer b{color:var(--mu);font-weight:600}
   <footer class="in d5"><b>100+ projets</b> · 16 pays · 4,9/5</footer>
 
 </div>
+<script>
+(function(){
+  // Discord n'expose pas d'URL publique par pseudo : un clic copie le pseudo.
+  var r=document.getElementById('dcRow'), v=document.getElementById('dcVal');
+  if(!r) return;
+  r.addEventListener('click',function(e){
+    e.preventDefault();
+    var t=r.dataset.tag;
+    var fini=function(){ v.textContent='copié !';
+      setTimeout(function(){ v.textContent=t; },1500); };
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(t).then(fini,fini);
+    } else {
+      var i=document.createElement('input'); i.value=t; document.body.appendChild(i);
+      i.select(); try{ document.execCommand('copy'); }catch(_){}
+      document.body.removeChild(i); fini();
+    }
+  });
+})();
+</script>
 </body>
 </html>

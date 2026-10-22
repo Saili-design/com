@@ -1,11 +1,23 @@
-BEGIN:VCARD
-VERSION:3.0
-N:EL FORKANI;Ilias;;;
-FN:Ilias EL FORKANI
-TITLE:3D & real-time artist
-EMAIL;TYPE=INTERNET:ilias.forkani@gmail.com
-TEL;TYPE=CELL:+33619906799
-URL:https://saili-design.github.io/com/hub/
-X-SOCIALPROFILE;TYPE=linkedin:https://www.linkedin.com/in/ilias-elforkani/
-NOTE:Game design et level design. Environnements, props et eclairage. Cinematiques, trailers et game ads.
-END:VCARD
+BEGIN:VCARD
+
+VERSION:3.0
+
+N:EL FORKANI;Ilias;;;
+
+FN:Ilias EL FORKANI
+
+TITLE:3D & real-time artist
+
+EMAIL;TYPE=INTERNET:ilias.forkani@gmail.com
+
+TEL;TYPE=CELL:+33619906799
+
+URL:https://saili-design.github.io/com/hub/
+
+X-SOCIALPROFILE;TYPE=linkedin:https://www.linkedin.com/in/ilias-elforkani/
+
+NOTE:Game design et level design. Environnements, props et eclairage. Cinematiques, trailers et game ads.
+
+X-SOCIALPROFILE;TYPE=discord:saili.design
+END:VCARD
+
