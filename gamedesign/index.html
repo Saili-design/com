@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ilias El Forkani · Game designer & chef de projet événementiel</title>
+<meta name="description" content="Game designer et chef de projet événementiel. Mécaniques, énigmes, escape games, et pilotage d'événements de bout en bout.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#08080c; --s1:#101017; --s2:#16161f; --line:#262633;
+  --tx:#edecf2; --mu:#9a9aad; --mu2:#6b6b7e;
+  --ac:#ffc53d; --ac2:#5ee6c8; --ac3:#ff5d8f;
+  --disp:'Space Grotesk',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font-family:var(--disp);line-height:1.6;overflow-x:hidden}
+.wrap{width:min(1180px,92vw);margin-inline:auto}
+section{padding:clamp(64px,9vw,120px) 0;position:relative}
+
+/* halo qui suit la souris */
+#glow{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(420px circle at var(--mx,50%) var(--my,30%),rgba(255,197,61,.07),transparent 65%);
+  transition:background .2s}
+
+/* ---------- hero ---------- */
+header{min-height:100svh;display:flex;align-items:center;position:relative;overflow:hidden}
+.grid-bg{position:absolute;inset:0;z-index:0;opacity:.5;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,#000 20%,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,#000 20%,transparent 75%)}
+header .wrap{position:relative;z-index:1}
+.kick{font:700 12px/1 var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--ac);
+  display:inline-flex;align-items:center;gap:10px;margin-bottom:26px}
+.kick::before{content:'';width:28px;height:1px;background:var(--ac)}
+h1{font:700 clamp(44px,8.4vw,108px)/.96 var(--disp);letter-spacing:-.04em;margin-bottom:20px}
+h1 .l2{display:block;color:var(--mu2)}
+.sub{font-size:clamp(17px,2.1vw,22px);color:var(--mu);max-width:62ch;margin-bottom:38px}
+.sub b{color:var(--tx);font-weight:500}
+.stats{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px}
+.stat{background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:12px 18px}
+.stat strong{display:block;font:700 22px/1 var(--disp);color:var(--ac)}
+.stat span{font:400 11px/1.4 var(--mono);letter-spacing:.07em;color:var(--mu2);text-transform:uppercase}
+.cta{display:inline-flex;align-items:center;gap:12px;background:var(--ac);color:#0a0a0f;
+  font:700 15px/1 var(--disp);padding:16px 26px;border-radius:12px;text-decoration:none;
+  border:none;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.cta:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(255,197,61,.28)}
+.cta.ghost{background:transparent;color:var(--tx);border:1px solid var(--line)}
+.cta.ghost:hover{border-color:var(--ac);box-shadow:none}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+
+/* ---------- titres ---------- */
+.head{margin-bottom:44px}
+.head h2{font:700 clamp(28px,4.4vw,50px)/1.08 var(--disp);letter-spacing:-.035em}
+.head p{color:var(--mu);margin-top:12px;max-width:60ch}
+.tag{font:700 11px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ac2);margin-bottom:14px;display:block}
+
+/* ---------- cartes fiche de poste ---------- */
+.prog{display:flex;align-items:center;gap:16px;margin-bottom:28px;font:700 12px/1 var(--mono);
+  letter-spacing:.12em;text-transform:uppercase;color:var(--mu2)}
+.bar{flex:1;height:3px;background:var(--line);border-radius:3px;overflow:hidden;max-width:320px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--ac),var(--ac2));
+  transition:width .55s cubic-bezier(.2,.8,.2,1)}
+.locks{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.lock{position:relative;background:var(--s1);border:1px solid var(--line);border-radius:16px;
+  padding:24px;cursor:pointer;overflow:hidden;text-align:left;color:inherit;font:inherit;
+  transition:border-color .3s,transform .3s,background .3s}
+.lock:hover{border-color:#3a3a4d;transform:translateY(-3px)}
+.lock:focus-visible{outline:2px solid var(--ac);outline-offset:3px}
+.lock .n{font:700 11px/1 var(--mono);letter-spacing:.16em;color:var(--mu2)}
+.lock h3{font:700 19px/1.25 var(--disp);letter-spacing:-.02em;margin:12px 0 10px}
+.lock .req{color:var(--mu);font-size:14.5px}
+.padlock{position:absolute;top:22px;right:22px;width:22px;height:26px}
+.padlock .body{position:absolute;bottom:0;width:22px;height:16px;border-radius:4px;background:var(--mu2);transition:background .35s}
+.padlock .sh{position:absolute;top:0;left:4px;width:14px;height:12px;border:2.5px solid var(--mu2);
+  border-bottom:none;border-radius:7px 7px 0 0;transition:transform .45s cubic-bezier(.3,1.6,.5,1),border-color .35s;transform-origin:right bottom}
+.lock .n,.lock .cue{display:block}
+.lock .req{display:block}
+.lock .ans{display:block;max-height:0;opacity:0;overflow:hidden;
+  transition:max-height .6s cubic-bezier(.2,.8,.2,1),opacity .4s;border-top:1px solid transparent}
+.lock .ans p{font-size:14.5px;color:var(--tx);padding-top:16px}
+.lock .ans .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.chip{font:400 11px/1 var(--mono);letter-spacing:.04em;background:var(--s2);border:1px solid var(--line);
+  color:var(--mu);border-radius:20px;padding:7px 11px}
+.lock .hintpill{display:inline-block;margin-top:14px;font:700 11px/1 var(--mono);letter-spacing:.14em;
+  color:var(--ac);text-transform:uppercase}
+.lock.on{background:var(--s2);border-color:#3b4a46}
+.lock.on .padlock .body{background:var(--ac2)}
+.lock.on .padlock .sh{border-color:var(--ac2);transform:rotate(-32deg) translateY(-2px)}
+.lock.on .ans{max-height:460px;opacity:1;border-top-color:var(--line)}
+.lock .cue{position:absolute;bottom:18px;right:22px;font:700 10px/1 var(--mono);letter-spacing:.16em;
+  color:var(--mu2);text-transform:uppercase;transition:opacity .3s}
+.lock.on .cue{opacity:0}
+
+/* ---------- panneau final ---------- */
+.done{margin-top:20px;background:linear-gradient(135deg,rgba(94,230,200,.09),rgba(255,197,61,.07));
+  border:1px solid #33484a;border-radius:18px;padding:30px;
+  opacity:0;transform:translateY(14px);pointer-events:none;transition:opacity .6s,transform .6s}
+.done.on{opacity:1;transform:none;pointer-events:auto}
+.done h3{font:700 23px/1.2 var(--disp);letter-spacing:-.025em;margin-bottom:10px}
+.done p{color:var(--mu);max-width:64ch}
+
+/* ---------- projets ---------- */
+.projs{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px}
+.proj{position:relative;background:var(--s1);border:1px solid var(--line);border-radius:18px;
+  overflow:hidden;cursor:pointer;text-align:left;color:inherit;font:inherit;padding:0;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .35s}
+.proj:hover{border-color:#3a3a4d}
+.proj:focus-visible{outline:2px solid var(--ac);outline-offset:3px}
+.proj .ph{display:block;aspect-ratio:16/10;overflow:hidden;position:relative;background:var(--s2)}
+.proj .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1),filter .4s;
+  filter:saturate(.85) brightness(.82)}
+.proj:hover .ph img{transform:scale(1.06);filter:saturate(1) brightness(1)}
+.proj .ph::after{content:'OUVRIR';position:absolute;left:14px;bottom:14px;
+  font:700 10px/1 var(--mono);letter-spacing:.18em;background:rgba(8,8,12,.78);
+  border:1px solid var(--line);border-radius:20px;padding:8px 12px;color:var(--ac);
+  opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s}
+.proj:hover .ph::after{opacity:1;transform:none}
+.proj .bd{display:block;padding:20px 22px 24px}
+.proj .rl{display:block;font:700 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ac2)}
+.proj h3{font:700 20px/1.2 var(--disp);letter-spacing:-.025em;margin:11px 0 8px}
+.proj p{font-size:14px;color:var(--mu)}
+.proj.noimg .ph{display:flex;align-items:center;justify-content:center;
+  background:repeating-linear-gradient(45deg,var(--s2),var(--s2) 12px,var(--s1) 12px,var(--s1) 24px)}
+.proj.noimg .ph span{font:700 11px/1 var(--mono);letter-spacing:.16em;color:var(--mu2)}
+.proj.noimg .ph::after{display:none}
+
+/* ---------- code final ---------- */
+.safe{background:var(--s1);border:1px solid var(--line);border-radius:20px;padding:clamp(26px,4vw,42px);
+  display:grid;gap:22px;grid-template-columns:1fr;align-items:center}
+@media(min-width:880px){.safe{grid-template-columns:1.1fr .9fr}}
+.safe h2{font:700 clamp(24px,3.2vw,36px)/1.12 var(--disp);letter-spacing:-.03em;margin-bottom:12px}
+.safe p{color:var(--mu);font-size:15px}
+.dials{display:flex;gap:10px;margin-top:4px}
+.dials input{width:64px;height:76px;text-align:center;background:var(--s2);border:1px solid var(--line);
+  border-radius:12px;color:var(--ac);font:700 30px/1 var(--mono);transition:border-color .25s,box-shadow .25s}
+.dials input:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 3px rgba(255,197,61,.14)}
+.safe.ok .dials input{border-color:var(--ac2);color:var(--ac2);box-shadow:0 0 0 3px rgba(94,230,200,.12)}
+.safe.err .dials{animation:shake .4s}
+@keyframes shake{0%,100%{transform:none}25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+.msg{font:700 12px/1.5 var(--mono);letter-spacing:.08em;color:var(--mu2);min-height:20px;margin-top:14px}
+.safe.ok .msg{color:var(--ac2)}
+.reward{max-height:0;overflow:hidden;opacity:0;transition:max-height .7s cubic-bezier(.2,.8,.2,1),opacity .5s}
+.safe.ok .reward{max-height:340px;opacity:1}
+.reward .inner{padding-top:18px;border-top:1px solid var(--line);margin-top:18px}
+.linkbtn{background:none;border:none;color:var(--mu2);font:400 12px/1 var(--mono);text-decoration:underline;
+  cursor:pointer;padding:0;margin-top:12px}
+.linkbtn:hover{color:var(--ac)}
+
+/* ---------- contact ---------- */
+footer{border-top:1px solid var(--line);padding:clamp(48px,7vw,80px) 0 50px}
+.cts{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0 30px}
+.cts a{display:inline-flex;align-items:center;gap:9px;background:var(--s1);border:1px solid var(--line);
+  border-radius:12px;padding:14px 20px;color:var(--tx);text-decoration:none;font-size:14.5px;transition:border-color .25s,transform .25s}
+.cts a:hover{border-color:var(--ac);transform:translateY(-2px)}
+.fine{font:400 12px/1.7 var(--mono);color:var(--mu2)}
+
+/* ---------- lightbox ---------- */
+.lb{position:fixed;inset:0;z-index:60;background:rgba(5,5,9,.95);display:none;
+  align-items:center;justify-content:center;padding:4vmin;backdrop-filter:blur(6px)}
+.lb.on{display:flex}
+.lb figure{max-width:min(1100px,94vw);width:100%}
+.lb img{width:100%;max-height:74svh;object-fit:contain;border-radius:12px;display:block}
+.lb figcaption{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:16px;
+  font:400 13px/1.5 var(--mono);color:var(--mu)}
+.lb .nav{display:flex;gap:8px}
+.lb button{background:var(--s1);border:1px solid var(--line);color:var(--tx);border-radius:10px;
+  width:42px;height:42px;cursor:pointer;font-size:17px;transition:border-color .2s}
+.lb button:hover{border-color:var(--ac)}
+.lb .close{position:fixed;top:3vmin;right:3vmin;width:46px;height:46px}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(22px)}
+.rv.in{opacity:1;transform:none;transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition-duration:.01ms!important}
+  .rv{opacity:1;transform:none}
+}
+@media(max-width:560px){.dials input{width:54px;height:66px;font-size:26px}}
+</style>
+</head>
+<body>
+<div id="glow"></div>
+
+<header>
+  <div class="grid-bg"></div>
+  <div class="wrap">
+    <span class="kick">Portfolio · Game design & événementiel</span>
+    <h1>Ilias El Forkani<span class="l2">je conçois des jeux, et je les fais exister.</span></h1>
+    <p class="sub">Game designer et chef de projet événementiel. Je pense les <b>mécaniques</b>, j'écris les <b>énigmes</b>, et je pilote la production jusqu'au jour où des gens y jouent pour de vrai.</p>
+    <div class="stats">
+      <div class="stat"><strong>50+</strong><span>événements produits</span></div>
+      <div class="stat"><strong>30 000+</strong><span>participants</span></div>
+      <div class="stat"><strong>16</strong><span>pays clients</span></div>
+      <div class="stat"><strong>4,9/5</strong><span>note vérifiée</span></div>
+    </div>
+    <div class="ctas">
+      <a class="cta" href="#poste">Déverrouiller le dossier <span>&darr;</span></a>
+      <a class="cta ghost" href="#projets">Voir les projets</a>
+    </div>
+  </div>
+</header>
+
+<section id="poste">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="tag">Point par point</span>
+      <h2>Votre fiche de poste, déverrouillée.</h2>
+      <p>Six cartes, six exigences de l'annonce. Cliquez sur chacune pour voir ce que je mets en face.</p>
+    </div>
+    <div class="prog rv"><span id="cnt">0 / 6 déverrouillées</span><span class="bar"><i id="barfill"></i></span></div>
+    <div class="locks" id="locks"></div>
+    <div class="done" id="done">
+      <h3>Dossier complet.</h3>
+      <p>Les six points sont couverts, y compris l'impératif : conception <em>et</em> production de serious games, dont des escape games joués sur site. Il reste la partie que je préfère, celle où on joue ensemble.</p>
+    </div>
+  </div>
+</section>
+
+<section id="projets">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="tag">01 — Game design</span>
+      <h2>Des jeux, des niveaux, des énigmes.</h2>
+      <p>Conception de mécaniques, scénarisation de parcours et level design. Cliquez pour ouvrir.</p>
+    </div>
+    <div class="projs" id="gd"></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head rv">
+      <span class="tag">02 — Événementiel</span>
+      <h2>Et des événements qui se remplissent.</h2>
+      <p>Direction artistique, coordination des prestataires et conduite du jour J. Cliquez pour ouvrir.</p>
+    </div>
+    <div class="projs" id="ev"></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="safe rv" id="safe">
+      <div>
+        <span class="tag">Dernière énigme</span>
+        <h2>Le code à trois chiffres.</h2>
+        <p>Chaque carte déverrouillée plus haut cache un chiffre, marqué <strong style="color:var(--ac)">◆</strong>. Remettez les trois dans l'ordre et vous ouvrez la dernière porte.</p>
+        <div class="dials">
+          <input type="text" inputmode="numeric" maxlength="1" aria-label="Premier chiffre">
+          <input type="text" inputmode="numeric" maxlength="1" aria-label="Deuxième chiffre">
+          <input type="text" inputmode="numeric" maxlength="1" aria-label="Troisième chiffre">
+        </div>
+        <p class="msg" id="msg">En attente du code.</p>
+        <button class="linkbtn" id="hint">Besoin d'un indice ?</button>
+      </div>
+      <div>
+        <div class="reward"><div class="inner">
+          <h3 style="font:700 20px/1.25 var(--disp);letter-spacing:-.02em;margin-bottom:10px">Pourquoi ce portfolio est un jeu.</h3>
+          <p style="font-size:14.5px;color:var(--mu)">Parce que c'est le métier. Une mécanique simple, une règle qu'on comprend en trois secondes, une récompense à la fin, et surtout l'envie d'aller au bout. Si vous avez lu jusqu'ici, le jeu a fonctionné. C'est exactement ce que je viens faire chez vous.</p>
+          <div style="margin-top:18px"><a class="cta" href="mailto:ilias.forkani@gmail.com?subject=Chef%20de%20projet%20%26%20game%20designer">Me proposer un entretien</a></div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="tag">Contact</span>
+    <h2 style="font:700 clamp(26px,3.6vw,40px)/1.1 var(--disp);letter-spacing:-.03em">On en parle ?</h2>
+    <div class="cts">
+      <a href="mailto:ilias.forkani@gmail.com">✉ ilias.forkani@gmail.com</a>
+      <a href="tel:+33619906799">☏ 06 19 90 67 99</a>
+      <a href="https://www.linkedin.com/in/ilias-elforkani/" target="_blank" rel="noopener">in · LinkedIn</a>
+      <a href="https://saili-design.github.io/Ldportfolio/" target="_blank" rel="noopener">▣ Portfolio level design</a>
+    </div>
+    <p class="fine">Master Chef de projet multimédia · Bachelor Game Experience Design<br>Paris · disponible immédiatement</p>
+  </div>
+</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Galerie">
+  <button class="close" id="lbClose" aria-label="Fermer">✕</button>
+  <figure>
+    <img id="lbImg" alt="">
+    <figcaption>
+      <span id="lbCap"></span>
+      <span class="nav">
+        <button id="lbPrev" aria-label="Image précédente">‹</button>
+        <span id="lbNum" style="align-self:center;min-width:54px;text-align:center"></span>
+        <button id="lbNext" aria-label="Image suivante">›</button>
+      </span>
+    </figcaption>
+  </figure>
+</div>
+
+<script>
+/* ---------- données ---------- */
+const CODE = '536';   // 5 ans de production · 3 jours de parcours · 6 points couverts
+
+const POSTE = [
+  {n:'01', t:'Cadrage & Conseil',
+   req:"Analyser les besoins des clients et proposer des concepts de gamification.",
+   ans:"Je pars du besoin, pas du jeu. Chez Babasport, chaque parcours naissait d'une contrainte de lieu et d'un objectif client, puis la mécanique venait s'y adapter. En freelance, j'ai cadré des briefs pour des agences et des entreprises dans 16 pays.",
+   chips:['Analyse du besoin','Recommandation','Concepts de gamification'], digit:null},
+  {n:'02', t:'Conception & Game Design',
+   req:"Imaginer les mécaniques, concevoir les énigmes, scénariser les parcours.",
+   ans:"C'est mon cœur de métier. Chasses au trésor, énigmes et escape games conçus de A à Z, puis adaptés à des lieux réels comme le Château de Versailles ou Montmartre. Un parcours tenait sur ◆ 3 ◆ jours d'exploitation consécutifs.",
+   chips:['Mécaniques','Énigmes','Scénarisation','Équilibre ludique / pédagogique'], digit:3},
+  {n:'03', t:'Pilotage Opérationnel',
+   req:"Orchestrer la production en coordonnant développeurs, UX/UI, graphistes, imprimeurs.",
+   ans:"50+ événements produits en ◆ 5 ◆ ans, avec la coordination des prestataires, des graphistes et des imprimeurs. Date fixe, aucune session de rattrapage : la qualité finale et le respect des délais étaient mon problème, pas celui du client.",
+   chips:['Coordination prestataires','Rétroplanning','Garant de la qualité'], digit:5},
+  {n:'04', t:'Réalisation & Kitage',
+   req:"Suivre la fabrication physique et digitale, prototypes, tests, paramétrage.",
+   ans:"Brief graphiste, commande du matériel, montage des kits et test du parcours avant ouverture. J'ai aussi animé les sessions moi même, ce qui change tout : on voit en direct l'énigme qui bloque et on la corrige le lendemain.",
+   chips:['Brief graphiste','Matériel & kits','Prototypes','Tests terrain'], digit:null},
+  {n:'05', t:'Gestion analytique',
+   req:"Assurer le suivi de la rentabilité : temps, budgets et ressources.",
+   ans:"J'ai piloté des budgets de 0 à 2 000 € générant 2 000 à 10 000 € par événement, avec arbitrage au coût par billet vendu et bilan chiffré après chaque opération. Je sais dire non à une idée qui coûte plus qu'elle ne rapporte.",
+   chips:['Budget','Temps passé','Ressources','Bilan par opération'], digit:null},
+  {n:'06', t:'Facilitation & anglais',
+   req:"Animer des ateliers de co-création et présenter en français comme en anglais.",
+   ans:"J'anime depuis cinq ans : briefings de groupes, ateliers clients et conduite de jeu devant des participants qui ne se connaissent pas. En freelance je travaille quotidiennement en anglais, et les ◆ 6 ◆ points de cette annonce sont désormais couverts.",
+   chips:['Animation de groupes','Ateliers de co-création','FR / EN'], digit:6}
+];
+
+const GD = [
+  {r:'Jeu narratif · Level design', t:'Alys Redemption', d:"Conception des niveaux et scénarisation du parcours joueur, de l'intention au blockout jouable.",
+   imgs:['images/alys-01.jpg','images/alys-02.jpg']},
+  {r:'Jeu d’aventure · Level design', t:'Preux & Court', d:"Construction des espaces, rythme de progression et repères visuels qui guident sans tenir la main.",
+   imgs:['images/preux-01.jpg','images/preux-02.jpg']},
+  {r:'Infiltration · Level design', t:'Protocol', d:"Un niveau pensé autour de la lecture de la lumière : la couleur dit où passer et où se cacher.",
+   imgs:['images/protocol-01.jpg','images/protocol-02.jpg']},
+  {r:'Méthode · Blockout', t:'Du blockout au niveau fini', d:"La partie qu'on ne montre jamais : tester la circulation en volumes gris avant de poser le moindre décor.",
+   imgs:['images/ctemple-01.jpg','images/ctemple-02.jpg','images/outpost-01.jpg']},
+  {r:'Serious game · Babasport', t:'Chasses au trésor & escape games', d:"Alternance de septembre 2025 à septembre 2026 : conception des mécaniques et des énigmes, adaptation au Château de Versailles et à Montmartre, puis animation sur site. Visuels en cours d'ajout.",
+   imgs:[]}
+];
+
+const EV = [
+  {r:'Shield Project · Direction artistique', t:'50+ événements, 30 000 participants', d:"Trois ans et demi à la tête du collectif : identité, préventes, prestataires et conduite du jour J.",
+   imgs:['images/event-foule.jpg','images/event-renaissance.jpg']},
+  {r:'Identité & communication', t:'After Pride', d:"Direction artistique d'une soirée, du concept visuel à la déclinaison sur tous les formats.",
+   imgs:['images/event-afterpride.jpg']},
+  {r:'Production · Festival', t:'Formats festival', d:"Scénographie, supports et coordination technique sur des jauges de 500 à plusieurs milliers.",
+   imgs:['images/event-festival.jpg']},
+  {r:'Campagne événementielle', t:'Electro Storm', d:"Un visuel, trois formats, un objectif : remplir la salle avant l'ouverture des portes.",
+   imgs:['images/event-storm.jpg']}
+];
+
+/* ---------- construction ---------- */
+const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const mark = s => esc(s).replace(/◆ (\d) ◆/g, '<strong style="color:var(--ac)">◆ $1</strong>');
+
+document.getElementById('locks').innerHTML = POSTE.map((p,i)=>`
+  <button class="lock rv" data-i="${i}" aria-expanded="false">
+    <span class="padlock"><span class="sh"></span><span class="body"></span></span>
+    <span class="n">${p.n}</span>
+    <h3>${esc(p.t)}</h3>
+    <p class="req">${esc(p.req)}</p>
+    <span class="cue">Cliquer</span>
+    <span class="ans"><p>${mark(p.ans)}</p>
+      <span class="chips">${p.chips.map(c=>`<span class="chip">${esc(c)}</span>`).join('')}</span>
+    </span>
+  </button>`).join('');
+
+const card = (p,k,i)=>`
+  <button class="proj rv ${p.imgs.length?'':'noimg'}" data-k="${k}" data-i="${i}">
+    <span class="ph">${p.imgs.length?`<img src="${p.imgs[0]}" alt="${esc(p.t)}" loading="lazy">`:'<span>Visuels à venir</span>'}</span>
+    <span class="bd">
+      <span class="rl">${esc(p.r)}</span>
+      <h3>${esc(p.t)}</h3>
+      <p>${esc(p.d)}</p>
+    </span>
+  </button>`;
+document.getElementById('gd').innerHTML = GD.map((p,i)=>card(p,'gd',i)).join('');
+document.getElementById('ev').innerHTML = EV.map((p,i)=>card(p,'ev',i)).join('');
+
+/* ---------- déverrouillage ---------- */
+let opened = 0;
+const cnt = document.getElementById('cnt'), fill = document.getElementById('barfill'), done = document.getElementById('done');
+document.querySelectorAll('.lock').forEach(el=>{
+  el.addEventListener('click',()=>{
+    const was = el.classList.toggle('on');
+    el.setAttribute('aria-expanded', was);
+    opened += was ? 1 : -1;
+    cnt.textContent = `${opened} / 6 déverrouillée${opened>1?'s':''}`;
+    fill.style.width = (opened/6*100)+'%';
+    done.classList.toggle('on', opened===6);
+  });
+});
+
+/* ---------- lightbox ---------- */
+const SETS = {gd:GD, ev:EV};
+const lb=document.getElementById('lb'), lbImg=document.getElementById('lbImg'),
+      lbCap=document.getElementById('lbCap'), lbNum=document.getElementById('lbNum');
+let cur=[], idx=0, curTitle='';
+function show(){ lbImg.src=cur[idx]; lbCap.textContent=curTitle; lbNum.textContent=`${idx+1} / ${cur.length}`; }
+function open(k,i){ const p=SETS[k][i]; if(!p.imgs.length) return;
+  cur=p.imgs; idx=0; curTitle=p.t; show(); lb.classList.add('on'); document.body.style.overflow='hidden'; }
+function close(){ lb.classList.remove('on'); document.body.style.overflow=''; }
+document.querySelectorAll('.proj').forEach(el=>el.addEventListener('click',()=>open(el.dataset.k,+el.dataset.i)));
+document.getElementById('lbClose').onclick=close;
+document.getElementById('lbPrev').onclick=e=>{e.stopPropagation();idx=(idx-1+cur.length)%cur.length;show()};
+document.getElementById('lbNext').onclick=e=>{e.stopPropagation();idx=(idx+1)%cur.length;show()};
+lb.addEventListener('click',e=>{if(e.target===lb)close()});
+addEventListener('keydown',e=>{ if(!lb.classList.contains('on'))return;
+  if(e.key==='Escape')close(); if(e.key==='ArrowRight'){idx=(idx+1)%cur.length;show()}
+  if(e.key==='ArrowLeft'){idx=(idx-1+cur.length)%cur.length;show()} });
+
+/* ---------- coffre ---------- */
+const safe=document.getElementById('safe'), dials=[...safe.querySelectorAll('.dials input')], msg=document.getElementById('msg');
+dials.forEach((d,i)=>{
+  d.addEventListener('input',()=>{
+    d.value=d.value.replace(/\D/g,'');
+    if(d.value && i<2) dials[i+1].focus();
+    check();
+  });
+  d.addEventListener('keydown',e=>{ if(e.key==='Backspace' && !d.value && i>0) dials[i-1].focus(); });
+});
+function check(){
+  const v=dials.map(d=>d.value).join('');
+  if(v.length<3){ safe.classList.remove('ok','err'); msg.textContent='En attente du code.'; return; }
+  if(v===CODE){ safe.classList.add('ok'); safe.classList.remove('err'); msg.textContent='Ouvert. Bien joué.'; }
+  else{ safe.classList.add('err'); safe.classList.remove('ok'); msg.textContent='Mauvaise combinaison. Relisez les cartes.';
+        setTimeout(()=>safe.classList.remove('err'),420); }
+}
+document.getElementById('hint').onclick=function(){
+  msg.textContent='Les trois chiffres sont dans les cartes 03, 02 et 06, dans cet ordre.';
+  this.remove();
+};
+
+/* ---------- halo + reveal ---------- */
+const glow=document.getElementById('glow');
+addEventListener('pointermove',e=>{
+  glow.style.setProperty('--mx',e.clientX+'px'); glow.style.setProperty('--my',e.clientY+'px');
+},{passive:true});
+const io=new IntersectionObserver(es=>es.forEach((e,i)=>{
+  if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('in'), i*55); io.unobserve(e.target); }
+}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
